@@ -14,6 +14,7 @@ public class Book {
     private String name;
     private String author;
     private String company;
+    private String description;
     private String image;
     private double price;
     private int saleOff;
@@ -95,6 +96,14 @@ public class Book {
         this.price = price;
         this.saleOff = saleOff;
         this.bookTypeID = bookTypeID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     
