@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Book;
+import model.Category;
+import util.Constant;
 
 /**
  *
@@ -43,6 +45,7 @@ public class BookDAO {
                 book.setPrice(rs.getDouble("Price"));
                 book.setSaleOff(rs.getInt("SaleOff"));
                 book.setBookTypeID(rs.getInt("BookTypeID"));
+                book.setStatus(rs.getInt("Status"));
                 lstAllBook.add(book);
             }
         } catch (SQLException ex) {
@@ -73,7 +76,7 @@ public class BookDAO {
                 book.setPrice(rs.getDouble("Price"));
                 book.setSaleOff(rs.getInt("SaleOff"));
                 book.setBookTypeID(rs.getInt("BookTypeID"));
-
+                book.setStatus(rs.getInt("Status"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,7 +85,7 @@ public class BookDAO {
     }
 
     public boolean addBook(String name, String author, String company,
-            String description, String image, double price, int saleOff, int bookTypeID) {
+            String description, String image, double price, int saleOff, int bookTypeID, int status) {
         DataAccess da = new DataAccess();
         Connection conn = da.getConnection();
 
@@ -102,6 +105,7 @@ public class BookDAO {
             ps.setDouble(6, price);
             ps.setInt(7, saleOff);
             ps.setInt(8, bookTypeID);
+            ps.setInt(9, status);
             if (ps.executeUpdate() > 0) {
                 return true;
             } else {
@@ -113,27 +117,6 @@ public class BookDAO {
         }
     }
 
-    public boolean addCategory(String name) {
-        DataAccess da = new DataAccess();
-        Connection conn = da.getConnection();
-
-        String sql = "INSERT INTO tblCategory (Name) VALUE (?)";
-
-        PreparedStatement ps;
-        ResultSet rs;
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, name);
-            if (ps.executeUpdate() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
 
     public boolean addBookType(String name, int categoryID) {
         DataAccess da = new DataAccess();
@@ -162,21 +145,9 @@ public class BookDAO {
 
     public static void main(String[] args) {
         BookDAO bookDAO = new BookDAO();
-        System.out.println(bookDAO.addBookType("Phê bình văn học", 2));
-        System.out.println(bookDAO.addBookType("Phóng sự - Ký sự", 2));
-        System.out.println(bookDAO.addBookType("Sách về nhân vật văn học", 2));
-        System.out.println(bookDAO.addBookType("Thơ ca", 2));
-        System.out.println(bookDAO.addBookType("Tiểu thuyết lãng mạn", 2));
-        System.out.println(bookDAO.addBookType("Tiểu thuyết lịch sử", 2));
-        System.out.println(bookDAO.addBookType("Truyện & thơ ca dân gian", 2));
-        System.out.println(bookDAO.addBookType("Truyện dài", 2));
-        System.out.println(bookDAO.addBookType("Truyện giả tường - Thần bí", 2));
-        System.out.println(bookDAO.addBookType("Truyện kiếm hiệp", 2));
-        System.out.println(bookDAO.addBookType("Truyện ngắn - Tản văn", 2));
-        System.out.println(bookDAO.addBookType("Truyện thiếu nhi", 2));
-        System.out.println(bookDAO.addBookType("Truyện trinh thám, vụ án", 2));
-        System.out.println(bookDAO.addBookType("Tự truyện - Hồi ký", 2));
-       
-        
+//        System.out.println(bookDAO.addCategory("Test"));
+        System.out.println(bookDAO.addBookType("Test", 12));
+
     }
 }
+

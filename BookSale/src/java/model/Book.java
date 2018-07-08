@@ -19,6 +19,14 @@ public class Book {
     private double price;
     private int saleOff;
     private int bookTypeID;
+    /*
+    *   Status:
+    *   0: Active - Sach dang duoc ban
+    *   1: Inactive - Sach dung cung cap, ngung phat hanh
+    *   2: Pending: Sach dang het hang
+    */
+    private int status;
+    
 
     public int getID() {
         return ID;
@@ -104,6 +112,14 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     
     

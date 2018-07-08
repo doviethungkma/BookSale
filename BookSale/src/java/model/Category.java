@@ -12,6 +12,8 @@ package model;
 public class Category {
     private int ID;
     private String name;
+    private int status;
+    
 
     public int getID() {
         return ID;
@@ -35,6 +37,14 @@ public class Category {
     public Category(int ID, String name) {
         this.ID = ID;
         this.name = name;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     
     

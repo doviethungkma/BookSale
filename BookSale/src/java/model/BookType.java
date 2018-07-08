@@ -13,6 +13,8 @@ public class BookType {
     private int ID;
     private String name;
     private int categoryID;
+    private int status;
+    
 
     public int getID() {
         return ID;
@@ -45,6 +47,14 @@ public class BookType {
         this.ID = ID;
         this.name = name;
         this.categoryID = categoryID;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     
     
